@@ -61,4 +61,4 @@ jobs:
           push: true
           tags: |
             ${{ secrets.USERNAME }}/multi-model-ai-assistant:latest
-            ${{ secrets.PASSWORD }}/multi-model-ai-assistant:${{ github.sha }}
+            ${{ secrets.USERNAME }}/multi-model-ai-assistant:${{ github.sha }}
