@@ -29,7 +29,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['ALLOWED_EXTENSIONS'] = {'pdf', 'docx', 'xlsx', 'xls', 'txt', 'csv'}
 
 # Initialize OpenAI client
-api_key = os.getenv("OPENAI_API") or os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=api_key)
 
 # Initialize ChromaDB and SentenceTransformer

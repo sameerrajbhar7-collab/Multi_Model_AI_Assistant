@@ -1,0 +1,14 @@
+Flask
+PyPDF2
+python-docx
+pandas
+numpy
+chromadb
+python-dotenv
+sentence-transformers
+scikit-learn
+langchain-text-splitters
+openai
+openpyxl
+pytest
+flake8
