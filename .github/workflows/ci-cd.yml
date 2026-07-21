@@ -71,9 +71,10 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy to AWS App Runner
-        uses: aws-actions/amazon-app-runner-deploy@v1
+        uses: awslabs/amazon-app-runner-deploy@main
         with:
           service: ${{ secrets.AWS_APP_RUNNER_SERVICE_NAME }}
           image: ${{ secrets.USERNAME }}/multi-model-ai-assistant:${{ github.sha }}
+
 
 
