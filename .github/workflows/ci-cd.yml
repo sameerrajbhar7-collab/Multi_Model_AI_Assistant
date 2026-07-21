@@ -70,11 +70,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Deploy to AWS App Runner
-        uses: awslabs/amazon-app-runner-deploy@main
-        with:
-          service: multi-model-ai-assistant
-          image: ${{ secrets.USERNAME }}/multi-model-ai-assistant:${{ github.sha }}
+      - name: Trigger AWS App Runner Deployment
+        run: |
+          aws apprunner start-deployment --service-arn ${{ secrets.AWS_APP_RUNNER_SERVICE_ARN }}
+
 
 
 
