@@ -73,8 +73,9 @@ jobs:
       - name: Deploy to AWS App Runner
         uses: awslabs/amazon-app-runner-deploy@main
         with:
-          service: ${{ secrets.AWS_APP_RUNNER_SERVICE_NAME }}
+          service: multi-model-ai-assistant
           image: ${{ secrets.USERNAME }}/multi-model-ai-assistant:${{ github.sha }}
+
 
 
 
