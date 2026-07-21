@@ -15,6 +15,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Pre-download SentenceTransformer model to bake it into the image
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
+
+# Suppress Hugging Face hub symlink warnings
+ENV HF_HUB_DISABLE_SYMLINKS_WARNING=1
+
 # Copy project files
 COPY . .
 

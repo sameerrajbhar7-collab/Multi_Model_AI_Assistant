@@ -30,7 +30,11 @@ app.config['ALLOWED_EXTENSIONS'] = {'pdf', 'docx', 'xlsx', 'xls', 'txt', 'csv'}
 
 # Initialize OpenAI client
 api_key = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=api_key)
+if api_key:
+    client = OpenAI(api_key=api_key)
+else:
+    client = None
+    print("WARNING: OPENAI_API_KEY environment variable is not set. OpenAI features will be unavailable.")
 
 # Initialize ChromaDB and SentenceTransformer
 chroma_client = chromadb.PersistentClient(path=os.path.join(app.root_path, "chroma_db"))
@@ -149,6 +153,9 @@ def upload_file():
 
 @app.route('/query', methods=['POST'])
 def query():
+    if not client:
+        return jsonify({'error': 'OpenAI API Key is not configured. Please set the OPENAI_API_KEY environment variable.'}), 500
+
     data = request.get_json()
     query_text = data.get('query', '')
     if not query_text:
@@ -193,6 +200,9 @@ def query():
 
 @app.route('/generate_image', methods=['POST'])
 def generate_image():
+    if not client:
+        return jsonify({'error': 'OpenAI API Key is not configured. Please set the OPENAI_API_KEY environment variable.'}), 500
+
     data = request.get_json()
     prompt = data.get('prompt', '')
     if not prompt:

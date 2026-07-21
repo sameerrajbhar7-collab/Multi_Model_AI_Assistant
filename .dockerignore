@@ -1,0 +1,14 @@
+.env
+.git
+.github
+__pycache__
+chroma_db
+uploads
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.vscode
+.idea
+venv
+.venv

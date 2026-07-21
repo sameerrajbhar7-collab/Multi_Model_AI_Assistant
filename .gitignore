@@ -1,1 +1,12 @@
 .env
+__pycache__/
+chroma_db/
+uploads/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.vscode/
+.idea/
+.pytest_cache/
