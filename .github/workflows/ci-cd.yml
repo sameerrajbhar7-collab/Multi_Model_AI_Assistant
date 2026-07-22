@@ -62,19 +62,3 @@ jobs:
           tags: |
             ${{ secrets.USERNAME }}/multi-model-ai-assistant:latest
             ${{ secrets.USERNAME }}/multi-model-ai-assistant:${{ github.sha }}
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
-      - name: Trigger AWS App Runner Deployment
-        run: |
-          aws apprunner start-deployment --service-arn ${{ secrets.AWS_APP_RUNNER_SERVICE_ARN }}
-
-
-
-
-
